@@ -1,0 +1,128 @@
+Based on your travel.html file, the contents of the layout.hbs, header.hbs, and footer.hbs should be structured to separate common elements such as the header and footer while maintaining the page's overall layout.
+
+1. layout.hbs (Master Template Layout)
+This file will serve as the base template, and it will include the header and footer partials while allowing individual pages (like travel.hbs) to inject their unique content.
+
+hbs
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			{{> header}}  {{!-- Include header partial --}}
+
+			<div id="contents">
+				{{{body}}}  {{!-- Inject page-specific content here --}}
+			</div>
+
+			{{> footer}}  {{!-- Include footer partial --}}
+		</div>
+	</div>
+</body>
+</html>
+Explanation:
+
+{{title}}: Placeholder for dynamic page titles.
+{{> header}}: Includes the header section from header.hbs.
+{{{body}}}: Placeholder where the specific page content (like travel.hbs) will be injected.
+{{> footer}}: Includes the footer section from footer.hbs.
+2. header.hbs (Header Partial)
+This file should contain the common navigation and logo section from travel.html.
+
+hbs
+Copy
+Edit
+<div id="header">
+	<div id="logo">
+		<a href="/"><img src="/images/logo.png" alt="LOGO" height="100" width="200"></a>
+	</div>
+	<div id="navigation">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li class="selected"><a href="/travel">Travel</a></li>
+			<li><a href="/rooms">Rooms</a></li>
+			<li><a href="/meals">Meals</a></li>
+			<li><a href="/news">News</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</div>
+</div>
+Changes:
+
+Replaced index.html and other .html links with Express-friendly routes (e.g., /travel instead of travel.html).
+Added class="selected" to highlight the active page dynamically.
+3. footer.hbs (Footer Partial)
+This file should contain the footer navigation and social media links from travel.html.
+
+hbs
+Copy
+Edit
+<div id="footer">
+	<div>
+		<ul class="navigation">
+			<li><a href="/">Home</a></li>
+			<li class="active"><a href="/travel">Travel</a></li>
+			<li><a href="/rooms">Rooms</a></li>
+			<li><a href="/meals">Meals</a></li>
+			<li><a href="/news">News</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+		<div id="connect">
+			<a href="http://pinterest.com/fwtemplates/" target="_blank" class="pinterest"></a>
+			<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a>
+			<a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a>
+			<a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a>
+		</div>
+	</div>
+	<p>
+		© 2023 by BHACCASYONIZTAS BEACH RESORT. All Rights Reserved
+	</p>
+</div>
+Changes:
+
+Updated link paths to remove .html extensions for compatibility with Express routes.
+Preserved all social media links as they were.
+4. Updated travel.hbs
+Now that we have moved the header and footer to partials, travel.hbs will focus only on page-specific content and use the layout.
+
+hbs
+Copy
+Edit
+{{! Extend the layout }}
+{{#> layouts/layout}}
+
+<h1>Travel</h1>
+<ul id="sites">
+	<li>
+		<a href="/travel"><img src="/images/reef1.jpg" alt="Gale Reef"></a>
+		<h2><a href="/travel">Gale Reef</a></h2>
+		<p>
+			Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida.
+		</p>
+	</li>
+	<li>
+		<a href="/travel"><img src="/images/reef2.jpg" alt="Dawson's Reef"></a>
+		<h2><a href="/travel">Dawson’s Reef</a></h2>
+		<p>
+			Integer magna leo, posuere et dignissim vitae, porttitor at odio. Pellentesque a metus nec magna placerat volutpat.
+		</p>
+	</li>
+	<li>
+		<a href="/travel"><img src="/images/reef3.jpg" alt="Claire's Reef"></a>
+		<h2><a href="/travel">Claire’s Reef</a></h2>
+		<p>
+			Donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu.
+		</p>
+	</li>
+</ul>
+
+{{/layouts/layout}}

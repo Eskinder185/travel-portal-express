@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="background">
+        <div id="page">
+            {{> header}}  {{!-- Include header partial --}}
+
+            <div id="contents">
+                {{{body}}}  {{!-- Inject page-specific content here --}}
+            </div>
+
+            {{> footer}}  {{!-- Include footer partial --}}
+        </div>
+    </div>
+</body>
+</html>

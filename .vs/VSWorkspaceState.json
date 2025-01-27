@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\\u2013force"
+    "\\app_server",
+    "\\app_server\\Controllers",
+    "\\app_server\\routes",
+    "\\app_server\\views",
+    "\\app_server\\views\\layouts",
+    "\\app_server\\views\\partials",
+    "\\public"
   ],
-  "SelectedNode": "\\\u2013force\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
