@@ -1,0 +1,76 @@
+<div class="container">
+  <h1 class="hero">📊 Readiness Report — {{city}}</h1>
+  
+  <div class="grid">
+    <div class="card fade-in">
+      <h3>💰 Budget Analysis</h3>
+      <div style="display: grid; gap: 1rem;">
+        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--surface-hover); border-radius: var(--radius-md);">
+          <span>📅 Trip Duration:</span>
+          <strong>{{days}} days</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--surface-hover); border-radius: var(--radius-md);">
+          <span>💵 Daily Estimate:</span>
+          <strong>${{daily}}/day</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--surface-hover); border-radius: var(--radius-md);">
+          <span>📈 Expected Spend:</span>
+          <strong>${{expectedSpend}}</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--surface-hover); border-radius: var(--radius-md);">
+          <span>💳 Your Budget:</span>
+          <strong>${{budgetUSD}}</strong>
+        </div>
+      </div>
+      
+      <div style="margin-top: 1.5rem; padding: 1rem; border-radius: var(--radius-md); background: {{#if underBudget}}rgba(16, 185, 129, 0.1){{else}}rgba(245, 158, 11, 0.1){{/if}};">
+        {{#if underBudget}}
+          <p class="ok">✅ You're under budget! Great planning!</p>
+        {{else}}
+          <p class="warn">⚠️ Over budget by ${{#sub expectedSpend budgetUSD}}{{/sub}}</p>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <h3>🌤️ 5-Day Weather Forecast</h3>
+      <p class="muted mb-4">Based on historical monthly averages</p>
+      <ul class="forecast">
+        {{#each forecast}}
+          <li>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong>{{date}}</strong>
+                <div style="font-size: 0.875rem; color: var(--text-secondary);">
+                  High {{high}}° / Low {{low}}° (Feels {{feels}}°)
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.875rem;">🌧️ {{rainChancePct}}%</div>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="card fade-in" style="margin-top: 2rem;">
+    <h3>💾 Save & Share</h3>
+    <p class="muted mb-4">Save this analysis to share with friends or reference later</p>
+    
+    <form method="POST" action="/readiness/save">
+      <input type="hidden" name="city" value="{{city}}">
+      <input type="hidden" name="start" value="{{start}}">
+      <input type="hidden" name="end" value="{{end}}">
+      <input type="hidden" name="budgetUSD" value="{{budgetUSD}}">
+      <button type="submit" class="secondary">
+        💾 Save Snapshot
+      </button>
+    </form>
+  </div>
+
+  <div class="text-center mt-8">
+    <a href="/readiness" class="button secondary">← Check Another Trip</a>
+  </div>
+</div>

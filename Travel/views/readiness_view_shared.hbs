@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="hero">💾 {{title}}</h1>
+  
+  <div class="card mb-8">
+    <h3>🔗 Share This Analysis</h3>
+    <p class="muted mb-4">Share this link with friends or save it for later reference</p>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <code style="flex: 1; padding: 0.75rem; background: var(--surface-hover); border-radius: var(--radius-md); border: 1px solid var(--border);">{{{requestHost}}}/i/{{code}}</code>
+      <button onclick="navigator.clipboard.writeText('{{{requestHost}}}/i/{{code}}')" class="secondary">📋 Copy</button>
+    </div>
+  </div>
+
+  <div class="card fade-in">
+    <h3>📊 Saved Analysis Data</h3>
+    <pre style="background: var(--surface-hover); padding: 1rem; border-radius: var(--radius-md); overflow-x: auto; font-size: 0.875rem;">{{json payload}}</pre>
+  </div>
+  
+  <div class="text-center mt-8">
+    <a href="/readiness" class="button secondary">← Back to Readiness Check</a>
+  </div>
+</div>

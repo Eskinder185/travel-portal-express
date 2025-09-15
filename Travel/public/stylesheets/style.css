@@ -1,0 +1,464 @@
+/* === Travlr Modern Theme =============================================== */
+:root{
+  /* Colors */
+  --bg:#f7f8fb;
+  --surface:#ffffff;
+  --text:#0f172a;         /* slate-900 */
+  --muted:#475569;        /* slate-600 */
+  --border:#e5e7eb;       /* gray-200 */
+  --ring:#93c5fd;         /* blue-300 */
+  --primary:#2563eb;      /* blue-600 */
+  --primary-100:#e6f0ff;  /* light blue */
+  --shadow:0 1px 3px rgba(0,0,0,.05),0 10px 25px -10px rgba(2,6,23,.15);
+
+  /* Layout */
+  --radius:14px;
+  --mw:1100px;
+  --space:18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height:1.6;
+}
+
+/* Container auto-added by theme.js; you can also add it by hand */
+.container{max-width:var(--mw); margin-inline:auto; padding:16px}
+
+/* Headings */
+h1,h2,h3,h4{line-height:1.25; margin:28px 0 10px}
+h1{font-size:clamp(28px, 4vw, 36px); font-weight:800}
+h2{font-size:clamp(22px, 3vw, 28px); font-weight:700}
+h3{font-size:clamp(18px, 2.6vw, 22px); font-weight:700}
+p{margin:10px 0; color:var(--text)}
+.muted{color:var(--muted)}
+
+/* Links */
+a{color:var(--primary); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Cards */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+
+/* Images */
+img{max-width:100%; height:auto; border-radius:12px; box-shadow:0 8px 24px rgba(2,6,23,.08)}
+
+/* Lists */
+ul{padding-left:22px}
+ul.clean{list-style:none; padding:0; margin:0}
+ul.clean > li{margin:6px 0}
+
+/* Footer */
+footer{
+  margin-top:40px;
+  padding:18px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+/* Hero image rows in old template */
+img[alt*="THE SOUND"], img[alt*="hero"]{border-radius:16px}
+
+/* Button utility (optional) */
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:999px;
+  background:var(--primary); color:#fff; border:1px solid var(--primary);
+  text-decoration:none; font-weight:600;
+  box-shadow:0 6px 18px rgba(37,99,235,.25);
+}
+.btn:hover{filter:brightness(1.03)}
+.btn.outline{background:#fff; color:var(--primary); border-color:var(--primary)}
+
+/* Grids for image rows */
+.grid{display:grid; gap:16px}
+@media (min-width:700px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
+@media (min-width:980px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+
+/* ======= NAV (from earlier step) ======================================= */
+.header{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:12px 16px; background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.brand{display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-weight:800}
+.menu-toggle{display:none}
+.nav{overflow:hidden}
+.nav-list{list-style:none; display:flex; gap:8px; margin:0; padding:0; flex-wrap:wrap}
+.nav-link{
+  display:inline-block; padding:8px 12px; border-radius:999px;
+  text-decoration:none; color:#1f2937; background:#fff;
+  border:1px solid var(--border);
+  transition:background .2s,border-color .2s;
+}
+.nav-link:hover{background:var(--primary-100); border-color:#c7d2fe}
+.nav-link:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
+.nav-link.active{background:var(--primary-100); border-color:var(--primary); color:#0b3aa4; font-weight:600}
+@media (max-width: 768px){
+  .menu-toggle{display:inline-block; padding:8px 12px; border:1px solid var(--border); border-radius:8px; background:#fff; cursor:pointer}
+  .nav{max-height:0; transition:max-height .2s ease}
+  .nav.open{max-height:320px}
+  .nav-list{flex-direction:column; align-items:flex-start; padding-top:8px}
+}
+
+/* ======= Old footer link list cleanup ================================= */
+body > ul li a{display:inline-block; padding:2px 0}
+
+/* ======= App-specific styles for new features ========================= */
+/* Forms */
+form.card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background: var(--surface);
+  color: var(--text);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Buttons */
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37,99,235,.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.secondary {
+  background: var(--muted);
+}
+
+button.secondary:hover {
+  background: #334155;
+}
+
+button.success {
+  background: #10b981;
+}
+
+button.success:hover {
+  background: #059669;
+}
+
+button.warning {
+  background: #f59e0b;
+}
+
+button.warning:hover {
+  background: #d97706;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 0 4px 4px 0;
+  background: var(--primary-100);
+  color: var(--primary);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+/* Status indicators */
+.ok {
+  color: #10b981;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.warn {
+  color: #f59e0b;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error {
+  color: #ef4444;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Forecast */
+.forecast {
+  list-style: none;
+  padding: 0;
+}
+
+.forecast li {
+  padding: 12px;
+  margin-bottom: 8px;
+  background: var(--primary-100);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+/* Day form */
+.day {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--primary-100);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Button links */
+a.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+a.button:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37,99,235,.25);
+}
+
+a.button.success {
+  background: #10b981;
+  color: white;
+}
+
+a.button.success:hover {
+  background: #059669;
+  color: white;
+}
+
+a.button.secondary {
+  background: var(--muted);
+  color: white;
+}
+
+a.button.secondary:hover {
+  background: #334155;
+  color: white;
+}
+
+a.button.warning {
+  background: #f59e0b;
+  color: white;
+}
+
+a.button.warning:hover {
+  background: #d97706;
+  color: white;
+}
+
+/* Markdown content */
+.markdown {
+  line-height: 1.7;
+}
+
+.markdown h2, .markdown h3 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.markdown h2 {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.markdown p {
+  margin-bottom: 16px;
+}
+
+.markdown ul, .markdown ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.markdown li {
+  margin-bottom: 8px;
+}
+
+.markdown code {
+  background: var(--primary-100);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+}
+
+.markdown pre {
+  background: var(--primary-100);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+.markdown pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mt-8 { margin-top: 32px; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Hero styling for app pages */
+.hero {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* Grid layouts for app features */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.cards li.card {
+  margin-bottom: 0;
+}
+
+/* Row layout */
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* put this at the end of style.css if you have the three tiles on home */
+.home-tiles{margin-top:14px}
+.home-tiles img{width:100%}
+@media (min-width:700px){
+  .home-tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+}
+
+/* Hide legacy footer link list */
+body > ul:last-of-type { display: none; }
+ul.navigation { display: none; }
+
+/* Better footer styling if you want to keep it */
+footer ul { list-style:none; display:flex; flex-wrap:wrap; gap:12px; padding:0; margin:8px 0 0 }
+footer li a { text-decoration:none; color:#334155 }
+footer li a:hover { text-decoration:underline }
