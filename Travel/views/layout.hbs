@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}} - Travlr</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="description" content="Plan your perfect trip with Travlr - Travel readiness, destination guides, and itinerary builder">
   </head>
   <body>
-    {{{body}}}
+    <header class="header">
+      <a href="/" class="brand">
+        <span>✈️ Travlr Getaways</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+      <nav id="site-nav" class="nav">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link {{isActive '/' currentPath}}">Home</a></li>
+          <li><a href="/readiness" class="nav-link {{isActive '/readiness' currentPath}}">Readiness</a></li>
+          <li><a href="/destinations" class="nav-link {{isActive '/destinations' currentPath}}">Destinations</a></li>
+          <li><a href="/itinerary/new" class="nav-link {{isActive '/itinerary' currentPath}}">Itinerary</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      {{{body}}}
+    </main>
+    
+    <footer style="text-align: center; margin-top: 4rem; padding: 2rem; color: var(--text-muted); border-top: 1px solid var(--border);">
+      <p>Made with ❤️ for travelers everywhere</p>
+    </footer>
+
+    <script>
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          nav.classList.toggle('open');
+        });
+      }
+    </script>
   </body>
 </html>

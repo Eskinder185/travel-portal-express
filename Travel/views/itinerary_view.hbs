@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="hero">📅 {{title}}</h1>
+  
+  <div class="card mb-8">
+    <h3>🔗 Share This Itinerary</h3>
+    <p class="muted mb-4">Share this link with friends or save it for later reference</p>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+      <code style="flex: 1; padding: 0.75rem; background: var(--surface-hover); border-radius: var(--radius-md); border: 1px solid var(--border);">{{{requestHost}}}/i/{{../code}}</code>
+      <button onclick="navigator.clipboard.writeText('{{{requestHost}}}/i/{{../code}}')" class="secondary">📋 Copy</button>
+    </div>
+  </div>
+
+  <h2 class="mb-6">📅 Daily Schedule</h2>
+  <ol class="cards" style="counter-reset: day-counter;">
+    {{#each days}}
+      <li class="card fade-in" style="counter-increment: day-counter; position: relative;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="background: var(--primary); color: white; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.125rem;">
+            {{@index}}
+          </div>
+          <div style="flex: 1;">
+            <h4 style="margin: 0; color: var(--text-primary);">{{date}}</h4>
+            <p style="margin: 0.5rem 0 0 0; color: var(--text-secondary);">{{#if notes}}{{notes}}{{else}}No plans yet{{/if}}</p>
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ol>
+  
+  <div class="text-center mt-8">
+    <a href="/itinerary/new" class="button success">➕ Create New Itinerary</a>
+  </div>
+</div>

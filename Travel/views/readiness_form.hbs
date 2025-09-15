@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="hero">✈️ Travel Readiness</h1>
+  <p class="text-center muted mb-8">Plan your trip with confidence using our budget and weather analysis</p>
+  
+  <form method="POST" action="/readiness/calc" class="card fade-in">
+    <h3 class="mb-6">Trip Details</h3>
+    
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <label>
+        🌍 Destination City
+        <input name="city" placeholder="atlanta, lisbon, paris" required>
+      </label>
+      <label>
+        💰 Budget (USD)
+        <input type="number" name="budgetUSD" min="1" value="1000" required>
+      </label>
+    </div>
+    
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <label>
+        📅 Start Date
+        <input type="date" name="start" required>
+      </label>
+      <label>
+        📅 End Date
+        <input type="date" name="end" required>
+      </label>
+    </div>
+    
+    <button type="submit" class="success" style="width: 100%; margin-top: 1rem;">
+      🔍 Check Readiness
+    </button>
+  </form>
+  
+  <div class="text-center mt-6">
+    <p class="muted">💡 No external APIs used. Weather data based on historical averages.</p>
+  </div>
+</div>

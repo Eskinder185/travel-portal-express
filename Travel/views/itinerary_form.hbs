@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="hero">📅 Create Itinerary</h1>
+  <p class="text-center muted mb-8">Plan your perfect trip day by day</p>
+  
+  <form method="POST" action="/itinerary" class="card fade-in">
+    <h3 class="mb-6">Trip Information</h3>
+    
+    <label>
+      🏷️ Trip Title
+      <input name="title" placeholder="Paris long weekend, Tokyo adventure..." required>
+    </label>
+
+    <h3 class="mb-4 mt-8">📅 Daily Schedule</h3>
+    <div id="days">
+      <div class="day">
+        <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 1rem;">
+          <label>
+            📅 Date
+            <input type="date" name="date" required>
+          </label>
+          <label>
+            📝 Plans & Notes
+            <input name="notes" placeholder="Louvre, picnic lunch, Seine cruise...">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-6">
+      <button type="button" id="add" class="secondary">➕ Add Another Day</button>
+      <button type="submit" class="success">💾 Save & Share</button>
+    </div>
+  </form>
+</div>
+
+<script>
+document.getElementById('add').onclick = () => {
+  const wrap = document.getElementById('days');
+  const div = document.createElement('div');
+  div.className = 'day fade-in';
+  div.innerHTML = `
+    <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 1rem;">
+      <label>
+        📅 Date
+        <input type="date" name="date" required>
+      </label>
+      <label>
+        📝 Plans & Notes
+        <input name="notes" placeholder="Plans for this day...">
+      </label>
+    </div>
+  `;
+  wrap.appendChild(div);
+  
+  // Scroll to the new day
+  div.scrollIntoView({ behavior: 'smooth' });
+};
+</script>

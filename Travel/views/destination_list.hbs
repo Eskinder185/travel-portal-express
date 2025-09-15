@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="hero">🌍 Destination Guide</h1>
+  <p class="text-center muted mb-8">Discover amazing places to visit with our curated travel guides</p>
+  
+  <div class="card mb-8">
+    <h3 class="mb-4">🔍 Search Destinations</h3>
+    <form method="GET" class="row">
+      <input name="q" placeholder="Search destinations..." value="{{q}}" style="flex: 1;">
+      <input name="tag" placeholder="Filter by tag..." value="{{tag}}" style="flex: 1;">
+      <button type="submit" class="secondary">🔍 Search</button>
+    </form>
+  </div>
+
+  {{#if items.length}}
+    <ul class="cards">
+      {{#each items}}
+        <li class="card fade-in">
+          <h3><a href="/destinations/{{slug}}">{{title}}</a></h3>
+          <p class="muted mb-4">{{summary}}</p>
+          <div class="tags">
+            {{#each tags}}<span class="tag">🏷️ {{this}}</span>{{/each}}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="card text-center">
+      <h3>🔍 No destinations found</h3>
+      <p class="muted">Try adjusting your search terms or browse all destinations.</p>
+      <a href="/destinations" class="button secondary mt-4">View All Destinations</a>
+    </div>
+  {{/if}}
+</div>

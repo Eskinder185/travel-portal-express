@@ -1,4 +1,28 @@
+﻿# node
 node_modules/
-.vs/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# builds & caches
+dist/
+coverage/
+.cache/
+
+# env & secrets
+.env
+.env.*
+
+# local data
+Travel/db/*.db
+Travel/db/*.sqlite
+*.sqlite
+*.db
+
+# logs
+logs/
+*.log
+
+# OS
 .DS_Store
-bin/
+Thumbs.db
